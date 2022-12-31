@@ -1,0 +1,5 @@
+com\microservice\currencyexchangeservice\CurrencyExchangeRepository.class
+com\microservice\currencyexchangeservice\model\CurrencyExchange.class
+com\microservice\currencyexchangeservice\controller\CurrencyExchangeController.class
+com\microservice\currencyexchangeservice\controller\CircuitBreakerController.class
+com\microservice\currencyexchangeservice\SpringbootCurrencyExchangeServiceApplication.class
