@@ -13,16 +13,16 @@ spring:
         - Path=/get
         filters:
         - AddRequestHeader=X-Request-Red, Blue
-      - id: currency-exchange
-        uri: lb://currency-exchange
+      - id: currency-exchange-service
+        uri: lb://currency-exchange-service
         predicates:
         - Path=/currency-exchange/**
       - id: currency-conversion
-        uri: lb://currency-conversion
+        uri: lb://currency-conversion-service
         predicates:
         - Path=/currency-conversion-feign/**
       - id: currency-conversion
-        uri: lb://currency-conversion
+        uri: lb://currency-conversion-service
         predicates:
         - Path=/currency-conversion/**
 #      discovery:
