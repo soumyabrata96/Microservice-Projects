@@ -29,7 +29,9 @@ spring:
 #        locator:
 #          enabled: true 
 #          lower-case-service-id: true 
-        
+security:
+  user: ${username}
+  password: ${password}
 eureka:
   client:
     serviceUrl:
