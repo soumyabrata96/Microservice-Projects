@@ -1,0 +1,44 @@
+server:
+  port : 8765
+  
+spring:
+  application : 
+    name : api-gateway
+  cloud:
+    gateway:
+      routes:
+      - id: httpbin
+        uri: http://httpbin.org:80
+        predicates:
+        - Path=/get
+        filters:
+        - AddRequestHeader=X-Request-Red, Blue
+      - id: currency-exchange
+        uri: lb://currency-exchange
+        predicates:
+        - Path=/currency-exchange/**
+      - id: currency-conversion
+        uri: lb://currency-conversion
+        predicates:
+        - Path=/currency-conversion-feign/**
+      - id: currency-conversion
+        uri: lb://currency-conversion
+        predicates:
+        - Path=/currency-conversion/**
+#      discovery:
+#        locator:
+#          enabled: true 
+#          lower-case-service-id: true 
+        
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka
+management:
+  tracing:
+    sampling:
+      probability: 1.0
+# traceID and spanId are predefined MDC keys - we want the logs to include them
+logging:
+  pattern:
+    level: "%5p [${spring.application.name:},%X{traceId:-},%X{spanId:-}]"  
