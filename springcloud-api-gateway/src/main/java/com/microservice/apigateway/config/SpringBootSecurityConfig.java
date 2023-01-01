@@ -16,6 +16,10 @@ import org.springframework.security.web.server.SecurityWebFilterChain;
 @EnableWebFluxSecurity
 public class SpringBootSecurityConfig {
 
+	@Value("security.user")
+	private String username;
+	@Value("security.password")
+	private String password;
 	@Bean
     public MapReactiveUserDetailsService userDetailsService() {
 		UserDetails user = User.withUsername("username")
